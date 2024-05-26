@@ -1,0 +1,33 @@
+name: packer validate
+
+on:
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest     
+
+    steps:
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: 'packer'
+
+      - name: Set up Packer
+        id: setup
+        uses: hashicorp/setup-packer@main
+
+      - name: Packer init
+        id: init
+        run: "packer init image.pkr.hcl"
+
+      - name: Packer fmt check
+        id: fmt
+        run: "packer fmt -check image.pkr.hcl"
+
+      - name: Packer validate
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources image.pkr.hcl"
