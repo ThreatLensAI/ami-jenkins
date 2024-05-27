@@ -1,11 +1,11 @@
 variable "region" {
   type    = string
-  default = "us-east-2"
+  default = "us-east-1"
 }
 
-variable "ami_name" {
+variable "ami_name_prefix" {
   type    = string
-  default = "csye7125-jenkins-{{timestamp}}"
+  default = "csye7125-jenkins"
 }
 
 variable "instance_type" {
@@ -20,11 +20,21 @@ variable "tags" {
   }
 }
 
-variable "source_ami_filter_name" {
+variable "source_ami" {
   type    = string
-  default = "ubuntu/images/*ubuntu-noble-24.04-amd64-server-*"
+  default = "ami-0a24670a6532ea110"
 }
 
 variable "domain" {
   type = string
+}
+
+variable "ssh_username" {
+  type    = string
+  default = "ubuntu"
+}
+
+variable "ami_description" {
+  type    = string
+  default = "Jenkins with caddy on Ubuntu LTS"
 }

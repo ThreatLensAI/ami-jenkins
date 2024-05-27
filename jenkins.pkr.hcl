@@ -1,23 +1,11 @@
 source "amazon-ebs" "ubuntu" {
-  region                      = var.region
-  ami_name                    = var.ami_name
-  ami_description             = "Ubuntu setup with Jenkins"
-  tags                        = var.tags
-  instance_type               = var.instance_type
-  associate_public_ip_address = false
-
-  # TODO: Filter on name or hardcoded AMI ID?
-  source_ami_filter {
-    filters = {
-      name                = var.source_ami_filter_name
-      root-device-type    = "ebs"
-      virtualization-type = "hvm"
-    }
-    most_recent = true
-    owners      = ["099720109477"]
-  }
-  ssh_username = "ubuntu"
-  # ami_users    = [""] TODO: Fill this
+  region          = var.region
+  ami_name        = "${var.ami_name_prefix}-{{timestamp}}"
+  ami_description = var.ami_description
+  tags            = var.tags
+  instance_type   = var.instance_type
+  source_ami      = var.source_ami
+  ssh_username    = var.ssh_username
 }
 
 build {
