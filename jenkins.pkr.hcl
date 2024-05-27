@@ -1,7 +1,7 @@
 source "amazon-ebs" "ubuntu" {
   region          = var.region
   ami_name        = "${var.ami_name_prefix}-{{timestamp}}"
-  ami_description = "Ubuntu setup with Jenkins"
+  ami_description = var.ami_description
   tags            = var.tags
   instance_type   = var.instance_type
   source_ami      = var.source_ami

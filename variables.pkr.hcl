@@ -33,3 +33,8 @@ variable "ssh_username" {
   type    = string
   default = "ubuntu"
 }
+
+variable "ami_description" {
+  type    = string
+  default = "Jenkins with caddy on Ubuntu LTS"
+}
