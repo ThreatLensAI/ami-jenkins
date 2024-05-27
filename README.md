@@ -17,7 +17,7 @@ Before building the image, you need to initialize Packer. This step ensures that
 
 To initialize Packer, run the following command in your terminal:
 
-    packer init image.pkr.hcl
+    packer init .
 
 ## Building the Image
 
@@ -25,6 +25,4 @@ Once Packer is initialized, you can build the custom image using the provided `.
 
 To build the image, run the following command in your terminal:
 
-    packer build -color=false -var 'project_id=YOUR_PROJECT_ID' image.pkr.hcl
-
-Replace `YOUR_PROJECT_ID` with your actual AWS project ID.
+    packer build -color=false .
