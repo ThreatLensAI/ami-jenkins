@@ -1,9 +1,10 @@
 source "amazon-ebs" "ubuntu" {
-  region          = var.region
-  ami_name        = var.ami_name
-  ami_description = "Ubuntu setup with Jenkins"
-  tags            = var.tags
-  instance_type   = var.instance_type
+  region                      = var.region
+  ami_name                    = var.ami_name
+  ami_description             = "Ubuntu setup with Jenkins"
+  tags                        = var.tags
+  instance_type               = var.instance_type
+  associate_public_ip_address = false
 
   # TODO: Filter on name or hardcoded AMI ID?
   source_ami_filter {

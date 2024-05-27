@@ -11,6 +11,9 @@ fi
 
 echo "Setting up Caddy for domain: $DOMAIN"
 
+# TODO: Remove this
+sudo ufw allow ssh
+
 # Set up firewall # TODO: Check if ufw is needed?
 sudo ufw allow proto tcp from any to any port 80,443
 sudo ufw --force enable
