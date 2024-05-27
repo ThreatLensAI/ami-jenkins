@@ -38,6 +38,7 @@ jobs:
 
       - name: Packer build
         env:
+          # TODO: Is this alright?
           PACKER_BUILD_ARGS: ${{ secrets.PACKER_BUILD_ARGS }}
         id: build
         run: packer build -color=false -var "${PACKER_BUILD_ARGS}" .
