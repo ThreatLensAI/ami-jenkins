@@ -11,15 +11,7 @@ fi
 
 echo "Setting up Caddy for domain: $DOMAIN"
 
-# TODO: Remove this
-sudo ufw allow ssh
-
-# Set up firewall # TODO: Check if ufw is needed?
-sudo ufw allow proto tcp from any to any port 80,443
-sudo ufw --force enable
-
 # TODO: Need to create new user `caddy` and assign permissions??
-
 sudo mkdir -p /etc/caddy
 
 # TODO: Remove the acme_ca block for production
