@@ -1,13 +1,19 @@
 name: packer validate
 
 on:
-  pull_request:
-    branches: 
+  push:
+    branches:
       - main
 
 jobs:
   validate:
-    runs-on: ubuntu-latest     
+    runs-on: ubuntu-latest
+    permissions:
+        contents: 'read'
+        id-token: 'write'
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
       - name: Checkout repository
@@ -29,3 +35,9 @@ jobs:
       - name: Packer validate
         id: validate
         run: "packer validate -syntax-only -evaluate-datasources ."
+
+      - name: Packer build
+        env:
+          PACKER_BUILD_ARGS: ${{ secrets.PACKER_BUILD_ARGS }}
+        id: build
+        run: packer build -color=false -var "${PACKER_BUILD_ARGS}" .
