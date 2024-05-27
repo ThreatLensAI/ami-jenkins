@@ -24,3 +24,7 @@ variable "source_ami_filter_name" {
   type    = string
   default = "ubuntu/images/*ubuntu-noble-24.04-amd64-server-*"
 }
+
+variable "domain" {
+  type = string
+}
