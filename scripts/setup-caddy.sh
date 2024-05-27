@@ -12,7 +12,6 @@ fi
 echo "Setting up Caddy for domain: $DOMAIN"
 
 sudo mkdir -p /etc/caddy
-# TODO: Remove the acme_ca block for production
 cat << EOF > /etc/caddy/Caddyfile
 $DOMAIN {
     reverse_proxy localhost:8080
