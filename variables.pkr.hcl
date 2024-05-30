@@ -25,10 +25,6 @@ variable "source_ami" {
   default = "ami-0a24670a6532ea110"
 }
 
-variable "domain" {
-  type = string
-}
-
 variable "ssh_username" {
   type    = string
   default = "ubuntu"
@@ -37,4 +33,12 @@ variable "ssh_username" {
 variable "ami_description" {
   type    = string
   default = "Jenkins with caddy on Ubuntu LTS"
+}
+
+variable "domain" {
+  type = string
+}
+
+variable "email" {
+  type = string
 }

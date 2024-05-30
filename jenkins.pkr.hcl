@@ -15,6 +15,7 @@ build {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
     environment_vars = [
       "DOMAIN=${var.domain}",
+      "EMAIL=${var.email}",
     ]
     scripts = [
       "scripts/install-dependencies.sh",
