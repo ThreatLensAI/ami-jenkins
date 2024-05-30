@@ -9,8 +9,8 @@ jobs:
   create-image:
     runs-on: ubuntu-latest
     permissions:
-        contents: 'read'
-        id-token: 'write'
+      contents: 'read'
+      id-token: 'write'
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -26,19 +26,19 @@ jobs:
 
       - name: Packer init
         id: init
-        run: "packer init ."
+        run: 'packer init .'
 
       - name: Packer fmt check
         id: fmt
-        run: "packer fmt -check ."
+        run: 'packer fmt -check .'
 
       - name: Packer validate
         id: validate
-        run: "packer validate -syntax-only -evaluate-datasources ."
+        run: 'packer validate -syntax-only -evaluate-datasources .'
 
       - name: Packer build
         env:
-          # TODO: Is this alright?
-          PACKER_BUILD_ARGS: ${{ secrets.PACKER_BUILD_ARGS }}
+          PKR_VAR_domain: ${{ secrets.PKR_VAR_domain }}
+          PKR_VAR_email: ${{ secrets.PKR_VAR_email }}
         id: build
-        run: packer build -color=false -var "${PACKER_BUILD_ARGS}" .
+        run: packer build -color=false .

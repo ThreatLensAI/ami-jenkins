@@ -5,14 +5,23 @@
 
 # Check if domain is provided
 if [ -z "$DOMAIN" ]; then
-    echo "Env variable '\$Domain' not provided."
+    echo "Env variable '\$DOMAIN' not provided."
     exit 1
 fi
 
-echo "Setting up Caddy for domain: $DOMAIN"
+if [ -z "$EMAIL" ]; then
+    echo "Env variable '\$EMAIL' not provided."
+    exit 1
+fi
+
+echo "Setting up Caddy for domain: $DOMAIN with email: $EMAIL"
 
 sudo mkdir -p /etc/caddy
 cat << EOF > /etc/caddy/Caddyfile
+{
+    # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+    email $EMAIL
+}
 $DOMAIN {
     reverse_proxy localhost:8080
 }

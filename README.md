@@ -27,13 +27,15 @@ Once Packer is initialized, you can build the custom image using the provided `.
 
 To build the image, run the following command in your terminal:
 
-    PACKER_BUILD_ARGS="domain=example.com" # Update with your domain
-    packer build -color=false -var "${PACKER_BUILD_ARGS}" .
+    export PKR_VAR_domain="example.com"         # Update with your domain
+    export PKR_VAR_email="email@example.com"    # Update with your email
+    packer build -color=false .
 
-The `-var` flag allows you to pass variables to the build process.
+In case you don't want to export the above variables, use the `-var` flag, it allows you to pass variables to the build process.
 Required variables are:
 
 - `domain` - The domain name to create SSL certificates for.
+- `email` - The email address to use for ZeroSSL certificates.
 
 ## CI/CD Pipeline
 
@@ -50,5 +52,6 @@ Required secrets for CI/CD pipeline are:
 
 - `AWS_ACCESS_KEY_ID` - The AWS access key ID.
 - `AWS_SECRET_ACCESS_KEY` - The AWS secret access key.
-- `PACKER_BUILD_ARGS` - The build arguments for Packer.
-  - `domain` - The domain name to create SSL certificates for.
+- PACKER Variables:
+  - `PKR_VAR_domain` - The domain name to create SSL certificates for.
+  - `PKR_VAR_email` - The email address to use for ZeroSSL certificates.
