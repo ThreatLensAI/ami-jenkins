@@ -37,8 +37,33 @@ variable "ami_description" {
 
 variable "domain" {
   type = string
+  validation {
+    condition     = var.domain != null && length(var.domain) > 0
+    error_message = "Domain cannot be empty."
+  }
 }
 
 variable "email" {
   type = string
+  validation {
+    condition     = var.email != null && length(var.email) > 0
+    error_message = "Email cannot be empty."
+  }
+}
+
+variable "jenkins_user" {
+  type = string
+  validation {
+    condition     = var.jenkins_user != null && length(var.jenkins_user) > 0
+    error_message = "Jenkins user cannot be empty."
+  }
+}
+
+variable "jenkins_password" {
+  type      = string
+  sensitive = true
+  validation {
+    condition     = var.jenkins_password != null && length(var.jenkins_password) > 0
+    error_message = "Jenkins password cannot be empty."
+  }
 }

@@ -19,8 +19,11 @@ build {
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
     environment_vars = [
+      "DEBIAN_FRONTEND=noninteractive",
       "DOMAIN=${var.domain}",
       "EMAIL=${var.email}",
+      "JENKINS_USER=${var.jenkins_user}",
+      "JENKINS_PASSWORD=${var.jenkins_password}"
     ]
     scripts = [
       "scripts/install-dependencies.sh",
