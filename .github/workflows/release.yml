@@ -40,5 +40,7 @@ jobs:
         env:
           PKR_VAR_domain: ${{ secrets.PKR_VAR_domain }}
           PKR_VAR_email: ${{ secrets.PKR_VAR_email }}
+          PKR_VAR_jenkins_user: ${{ secrets.PKR_VAR_jenkins_user }}
+          PKR_VAR_jenkins_password: ${{ secrets.PKR_VAR_jenkins_password }}
         id: build
         run: packer build -color=false .
