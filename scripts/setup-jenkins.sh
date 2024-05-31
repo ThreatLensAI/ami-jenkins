@@ -40,7 +40,7 @@ EOF
 
 # Init Groovy script
 sudo mkdir -p /var/lib/jenkins/init.groovy.d/
-sudo cp /tmp/init.groovy.d/ /var/lib/jenkins/init.groovy.d/
+sudo cp -r /tmp/init.groovy.d/ /var/lib/jenkins/init.groovy.d/
 
 # Change ownership of plugins, init.groovy.d directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/plugins
