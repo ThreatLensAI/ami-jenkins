@@ -38,9 +38,8 @@ Environment="EMAIL=$EMAIL"
 Environment="DOMAIN=$DOMAIN"
 EOF
 
-# Init Groovy script
-sudo mkdir -p /var/lib/jenkins/init.groovy.d/
-sudo cp -r /tmp/init.groovy.d/ /var/lib/jenkins/init.groovy.d/
+# Copying Init Groovy scripts
+sudo cp -r /tmp/init.groovy.d/ /var/lib/jenkins/
 
 # Change ownership of plugins, init.groovy.d directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/plugins

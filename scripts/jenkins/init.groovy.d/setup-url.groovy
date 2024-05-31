@@ -3,7 +3,6 @@
  */
 import jenkins.model.Jenkins
 import jenkins.model.JenkinsLocationConfiguration
-import groovy.net.URLBuilder
 
 def email = System.getenv("EMAIL")
 def domain = System.getenv("DOMAIN")
@@ -12,10 +11,8 @@ assert email != null : "No EMAIL env var provided, but required"
 assert domain != null : "No DOMAIN env var provided, but required"
 
 // Construct the URL using URLBuilder
-def urlBuilder = new URLBuilder()
-urlBuilder.scheme = 'https'
-urlBuilder.host = domain
-def url = urlBuilder.toString()
+// ~ Temporary fix since groovy doesn't have a URLBuilder
+def url = "https://${domain}"
 if (!url.endsWith("/")) {
     url += "/"
 }
