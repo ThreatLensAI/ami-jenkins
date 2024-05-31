@@ -1,0 +1,3 @@
+git:latest
+github:latest
+github-api:latest
