@@ -11,6 +11,11 @@ source "amazon-ebs" "ubuntu" {
 build {
   sources = ["source.amazon-ebs.ubuntu"]
 
+  provisioner "file" {
+    source      = "scripts/jenkins/"
+    destination = "/tmp/"
+  }
+
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
     environment_vars = [
@@ -20,6 +25,7 @@ build {
     scripts = [
       "scripts/install-dependencies.sh",
       "scripts/install-jenkins.sh",
+      "scripts/setup-jenkins.sh",
       "scripts/install-caddy.sh",
       "scripts/setup-caddy.sh"
     ]
