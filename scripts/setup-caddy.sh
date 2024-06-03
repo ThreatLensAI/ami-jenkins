@@ -31,4 +31,4 @@ EOF
 sudo systemctl restart caddy
 sudo systemctl enable caddy
 
-echo "Caddy setup complete. Please check if the service is running."
+echo "Caddy setup complete."

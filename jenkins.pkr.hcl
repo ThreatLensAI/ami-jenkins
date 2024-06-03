@@ -30,7 +30,9 @@ build {
       "scripts/install-jenkins.sh",
       "scripts/setup-jenkins.sh",
       "scripts/install-caddy.sh",
-      "scripts/setup-caddy.sh"
+      "scripts/setup-caddy.sh",
+      "scripts/install-docker.sh",
+      "scripts/setup-docker.sh"
     ]
   }
 }

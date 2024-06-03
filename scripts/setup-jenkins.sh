@@ -52,4 +52,4 @@ echo "Reloading systemd & starting Jenkins service..."
 sudo systemctl daemon-reload
 sudo systemctl start jenkins
 
-echo "Jenkins service started."
+echo "Jenkins setup complete."
