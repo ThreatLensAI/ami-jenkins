@@ -8,7 +8,6 @@ docker run --privileged --rm tonistiigi/binfmt --install all
 
 # Setup Docker permissions to Jenkins 
 sudo usermod -a -G docker jenkins
-chmod 666 /var/run/docker.sock
 
 # Start Docker
 sudo systemctl start docker
