@@ -42,10 +42,11 @@ Environment="JAVA_OPTS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard
 Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/casc_configs"
 Environment="EMAIL=$EMAIL"
 Environment="DOMAIN=$DOMAIN"
+Environment="SECRETS_FILE=/var/lib/jenkins/secrets/jcasc.properties"
 EOF
 
-sudo mkdir -p /run/secrets
-cat << EOF > /run/secrets/secrets.properties
+sudo mkdir -p /var/lib/jenkins/secrets
+cat << EOF > /var/lib/jenkins/secrets/jcasc.properties
 JENKINS_USER=$JENKINS_USER
 JENKINS_PASSWORD=$JENKINS_PASSWORD
 DOCKER_HUB_USERNAME=$DOCKER_HUB_USERNAME
@@ -55,8 +56,8 @@ EOF
 
 # Change ownership of plugins, init.groovy.d directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/plugins
-sudo chown -R jenkins:jenkins /run/secrets/secrets.properties
-sudo chmod 600 /run/secrets/secrets.properties
+sudo chown -R jenkins:jenkins /var/lib/jenkins/secrets/jcasc.properties
+sudo chmod 600 /var/lib/jenkins/secrets/jcasc.properties
 
 echo "Jenkins env setup complete."
 
