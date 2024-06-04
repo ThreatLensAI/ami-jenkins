@@ -28,4 +28,12 @@ jobs:
 
       - name: Packer validate
         id: validate
-        run: 'packer validate -syntax-only -evaluate-datasources .'
+        env:
+          PKR_VAR_domain: ${{ secrets.PKR_VAR_domain }}
+          PKR_VAR_email: ${{ secrets.PKR_VAR_email }}
+          PKR_VAR_jenkins_user: ${{ secrets.PKR_VAR_jenkins_user }}
+          PKR_VAR_jenkins_password: ${{ secrets.PKR_VAR_jenkins_password }}
+          PKR_VAR_docker_hub_username: ${{ secrets.PKR_VAR_docker_hub_username }}
+          PKR_VAR_docker_hub_password: ${{ secrets.PKR_VAR_docker_hub_password }}
+          PKR_VAR_github_token: ${{ secrets.PKR_VAR_github_token }}
+        run: 'packer validate .'
