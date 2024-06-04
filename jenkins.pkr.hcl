@@ -31,8 +31,8 @@ build {
   }
 
   provisioner "file" {
-    source      = "scripts/jenkins/"
-    destination = "/var/lib/jenkins/casc_configs/"
+    source      = "scripts/jenkins"
+    destination = "/tmp"
   }
 
 

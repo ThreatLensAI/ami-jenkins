@@ -26,7 +26,4 @@ sudo apt-get install -y jenkins=2.452.1
 sudo systemctl stop jenkins
 sudo systemctl enable jenkins
 
-# Create Jenkins config directory
-sudo mkdir -p /var/lib/jenkins/casc_configs/
-
 echo "Jenkins installation complete."

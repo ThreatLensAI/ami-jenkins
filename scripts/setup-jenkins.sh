@@ -19,6 +19,10 @@ wget -q https://github.com/jenkinsci/plugin-installation-manager-tool/releases/d
 
 echo "Installing Jenkins Plugins..."
 
+# Create Jenkins jcasc config directory
+sudo mkdir -p /var/lib/jenkins/casc_configs/
+sudo cp -r /tmp/jenkins/* /var/lib/jenkins/casc_configs/
+
 # Change ownership of jcasc config directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/casc_configs
 
