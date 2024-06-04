@@ -23,7 +23,6 @@ clearcase:latest
 git:latest
 git-parameter:latest
 github:latest
-repo:latest
 matrix-project:latest
 ssh-slaves:latest
 matrix-auth:latest
