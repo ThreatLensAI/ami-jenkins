@@ -6,6 +6,12 @@ source "amazon-ebs" "ubuntu" {
   instance_type   = var.instance_type
   source_ami      = var.source_ami
   ssh_username    = var.ssh_username
+  launch_block_device_mappings {
+    device_name           = "/dev/sda1"
+    volume_size           = var.volume_size
+    volume_type           = var.volume_type
+    delete_on_termination = true
+  }
 }
 
 build {

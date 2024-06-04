@@ -5,7 +5,7 @@ variable "region" {
 
 variable "ami_name_prefix" {
   type    = string
-  default = "csye7125-jenkins"
+  default = "csye7125-jenkins-staging-a2"
 }
 
 variable "instance_type" {
@@ -13,10 +13,20 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "volume_size" {
+  type    = number
+  default = 40
+}
+
+variable "volume_type" {
+  type    = string
+  default = "gp2"
+}
+
 variable "tags" {
   type = map(string)
   default = {
-    Name = "ami-jenkins"
+    Name = "ami-jenkins-staging"
   }
 }
 
