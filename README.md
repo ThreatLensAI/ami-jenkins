@@ -27,10 +27,13 @@ Once Packer is initialized, you can build the custom image using the provided `.
 
 To build the image, run the following command in your terminal:
 
-    export PKR_VAR_domain="example.com"           # Update with your domain
-    export PKR_VAR_email="email@example.com"      # Update with your email
-    export PKR_VAR_jenkins_user="jenkins"         # Update with your Jenkins user
-    export PKR_VAR_jenkins_password="password"    # Update with your Jenkins password
+    export PKR_VAR_domain="example.com"            # Update with your domain
+    export PKR_VAR_email="email@example.com"       # Update with your email
+    export PKR_VAR_jenkins_user="jenkins"          # Update with your Jenkins user
+    export PKR_VAR_jenkins_password="password"     # Update with your Jenkins password
+    export PKR_VAR_docker_hub_username="username"  # Update with your DockerHub username
+    export PKR_VAR_docker_hub_password="password"  # Update with your DockerHub password
+    export PKR_VAR_github_token="token"            # Update with your GitHub token
     packer build -color=false .
 
 In case you don't want to export the above variables, use the `-var` flag, it allows you to pass variables to the build process.
@@ -40,6 +43,9 @@ Required variables are:
 - `email` - The email address to use for ZeroSSL certificates.
 - `jenkins_user` - The Jenkins user to create.
 - `jenkins_password` - The password for the Jenkins user.
+- `docker_hub_username` - The DockerHub username.
+- `docker_hub_password` - The DockerHub password.
+- `github_token` - The GitHub token.
 
 ## CI/CD Pipeline
 
@@ -61,3 +67,6 @@ Required secrets for CI/CD pipeline are:
   - `PKR_VAR_email` - The email address to use for ZeroSSL certificates.
   - `PKR_VAR_jenkins_user` - The Jenkins user to create.
   - `PKR_VAR_jenkins_password` - The password for the Jenkins user.
+  - `PKR_VAR_docker_hub_username` - The DockerHub username.
+  - `PKR_VAR_docker_hub_password` - The DockerHub password.
+  - `PKR_VAR_github_token` - The GitHub token.
