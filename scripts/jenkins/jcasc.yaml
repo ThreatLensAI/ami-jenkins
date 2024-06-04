@@ -1,0 +1,54 @@
+jenkins:
+  systemMessage: 'Jenkins configured automatically by Jenkins Configuration as Code plugin'
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+        - name: 'Jenkins User'
+          id: ${JENKINS_USER}
+          password: ${JENKINS_PASSWORD}
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+tool:
+  git:
+    installations:
+      - name: git
+        home: git
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: dockerhub
+              username: '${DOCKER_HUB_USERNAME}'
+              password: '${DOCKER_HUB_PASSWORD}'
+              description: 'Docker Hub credentials'
+          - usernamePassword:
+              scope: GLOBAL
+              id: github
+              username: 'github'
+              password: '${GITHUB_TOKEN}'
+              description: 'GitHub credentials'
+          - string:
+              scope: GLOBAL
+              id: github-webhook
+              secret: '${GITHUB_TOKEN}'
+              description: 'GitHub webhook Token'
+
+unclassified:
+  githubpluginconfig:
+    configs:
+      - name: 'GitHub Plugin Configuration'
+        credentialsId: 'github-webhook'
+        manageHooks: true
+  location:
+    adminAddress: '${EMAIL}'
+    url: https://${DOMAIN}
+
+jobs:
+  - file: /var/lib/jenkins/casc_configs/jobs/static-site.groovy

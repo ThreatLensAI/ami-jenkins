@@ -11,10 +11,24 @@ source "amazon-ebs" "ubuntu" {
 build {
   sources = ["source.amazon-ebs.ubuntu"]
 
+  provisioner "shell" {
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
+    environment_vars = [
+      "DEBIAN_FRONTEND=noninteractive"
+    ]
+    scripts = [
+      "scripts/install-dependencies.sh",
+      "scripts/install-jenkins.sh",
+      "scripts/install-caddy.sh",
+      "scripts/install-docker.sh"
+    ]
+  }
+
   provisioner "file" {
     source      = "scripts/jenkins/"
-    destination = "/tmp/"
+    destination = "/var/lib/jenkins/casc_configs/"
   }
+
 
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
@@ -23,16 +37,16 @@ build {
       "DOMAIN=${var.domain}",
       "EMAIL=${var.email}",
       "JENKINS_USER=${var.jenkins_user}",
-      "JENKINS_PASSWORD=${var.jenkins_password}"
+      "JENKINS_PASSWORD=${var.jenkins_password}",
+      "DOCKER_HUB_USERNAME=${var.docker_hub_username}",
+      "DOCKER_HUB_PASSWORD=${var.docker_hub_password}",
+      "GITHUB_TOKEN=${var.github_token}"
     ]
     scripts = [
-      "scripts/install-dependencies.sh",
-      "scripts/install-jenkins.sh",
       "scripts/setup-jenkins.sh",
-      "scripts/install-caddy.sh",
       "scripts/setup-caddy.sh",
-      "scripts/install-docker.sh",
       "scripts/setup-docker.sh"
     ]
   }
+
 }

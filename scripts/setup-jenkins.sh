@@ -19,10 +19,13 @@ wget -q https://github.com/jenkinsci/plugin-installation-manager-tool/releases/d
 
 echo "Installing Jenkins Plugins..."
 
+# Change ownership of jcasc config directory
+sudo chown -R jenkins:jenkins /var/lib/jenkins/casc_configs
+
 # Install Plugins
 sudo java -jar jenkins-plugin-manager-2.13.0.jar --war /usr/share/java/jenkins.war \
 --plugin-download-directory /var/lib/jenkins/plugins \
---plugin-file /tmp/plugins.txt
+--plugin-file /var/lib/jenkins/casc_configs/plugins.txt
 
 echo "Jenkins Plugins Installed."
 
@@ -32,18 +35,24 @@ sudo mkdir -p /etc/systemd/system/jenkins.service.d/
 cat << EOF > /etc/systemd/system/jenkins.service.d/override.conf
 [Service]
 Environment="JAVA_OPTS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
-Environment="JENKINS_USER=$JENKINS_USER"
-Environment="JENKINS_PASSWORD=$JENKINS_PASSWORD"
+Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/casc_configs"
 Environment="EMAIL=$EMAIL"
 Environment="DOMAIN=$DOMAIN"
 EOF
 
-# Copying Init Groovy scripts
-sudo cp -r /tmp/init.groovy.d/ /var/lib/jenkins/
+sudo mkdir -p /run/secrets
+cat << EOF > /run/secrets/secrets.properties
+JENKINS_USER=$JENKINS_USER
+JENKINS_PASSWORD=$JENKINS_PASSWORD
+DOCKER_HUB_USERNAME=$DOCKER_HUB_USERNAME
+DOCKER_HUB_PASSWORD=$DOCKER_HUB_PASSWORD
+GITHUB_TOKEN=$GITHUB_TOKEN
+EOF
 
 # Change ownership of plugins, init.groovy.d directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/plugins
-sudo chown -R jenkins:jenkins /var/lib/jenkins/init.groovy.d
+sudo chown -R jenkins:jenkins /run/secrets/secrets.properties
+sudo chmod 600 /run/secrets/secrets.properties
 
 echo "Jenkins env setup complete."
 
