@@ -1,4 +1,4 @@
-source "amazon-ebs" "ubuntu" {
+alksjdklasjdlsource "amazon-ebs" "ubuntu" {
   region          = var.region
   ami_name        = "${var.ami_name_prefix}-{{timestamp}}"
   ami_description = var.ami_description
