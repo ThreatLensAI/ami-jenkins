@@ -13,6 +13,16 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "volume_size" {
+  type    = number
+  default = 40
+}
+
+variable "volume_type" {
+  type    = string
+  default = "gp2"
+}
+
 variable "tags" {
   type = map(string)
   default = {
@@ -67,3 +77,31 @@ variable "jenkins_password" {
     error_message = "Jenkins password cannot be empty."
   }
 }
+
+variable "docker_hub_username" {
+  type      = string
+  sensitive = true
+  validation {
+    condition     = var.docker_hub_username != null && length(var.docker_hub_username) > 0
+    error_message = "Docker Hub username cannot be empty."
+  }
+}
+
+variable "docker_hub_password" {
+  type      = string
+  sensitive = true
+  validation {
+    condition     = var.docker_hub_password != null && length(var.docker_hub_password) > 0
+    error_message = "Docker Hub password cannot be empty."
+  }
+}
+
+variable "github_token" {
+  type      = string
+  sensitive = true
+  validation {
+    condition     = var.github_token != null && length(var.github_token) > 0
+    error_message = "GitHub token cannot be empty."
+  }
+}
+

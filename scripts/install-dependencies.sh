@@ -17,4 +17,4 @@ sudo apt-get -y upgrade
 # Install Fontconfig, Java
 sudo apt-get install -y fontconfig openjdk-17-jre
 
-echo "Dependencies installation complete"
+echo "Dependencies installation complete."

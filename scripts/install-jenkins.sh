@@ -26,4 +26,4 @@ sudo apt-get install -y jenkins=2.452.1
 sudo systemctl stop jenkins
 sudo systemctl enable jenkins
 
-echo "Jenkins installation complete"
+echo "Jenkins installation complete."
