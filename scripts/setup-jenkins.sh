@@ -3,6 +3,9 @@
 # Setup Jenkins Server
 # Usage: setup-jenkins.sh
 
+# Stop Jenkins service
+sudo systemctl stop jenkins
+
 # Check if domain is provided
 if [ -z "$JENKINS_USER" ]; then
     echo "Env variable '\$JENKINS_USER' not provided."
@@ -62,8 +65,8 @@ sudo chmod 600 /var/lib/jenkins/secrets/jcasc.properties
 echo "Jenkins env setup complete."
 
 echo "Reloading systemd & starting Jenkins service..."
-# Reload systemd & start Jenkins service
+# Reload systemd & enable Jenkins service
 sudo systemctl daemon-reload
-sudo systemctl start jenkins
+sudo systemctl enable jenkins
 
 echo "Jenkins setup complete."

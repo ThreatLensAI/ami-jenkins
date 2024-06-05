@@ -46,7 +46,8 @@ build {
       "JENKINS_PASSWORD=${var.jenkins_password}",
       "DOCKER_HUB_USERNAME=${var.docker_hub_username}",
       "DOCKER_HUB_PASSWORD=${var.docker_hub_password}",
-      "GITHUB_TOKEN=${var.github_token}"
+      "GITHUB_TOKEN=${var.github_token}",
+      "ENVIRONMENT=${var.environment}"
     ]
     scripts = [
       "scripts/setup-jenkins.sh",
