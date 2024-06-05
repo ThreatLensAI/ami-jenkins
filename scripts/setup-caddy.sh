@@ -14,21 +14,35 @@ if [ -z "$EMAIL" ]; then
     exit 1
 fi
 
+# Stop Caddy Service
+sudo systemctl stop caddy
+
 echo "Setting up Caddy for domain: $DOMAIN with email: $EMAIL"
 
 sudo mkdir -p /etc/caddy
+
+if [[ $ENVIRONMENT = "PRODUCTION" ]]; then
 cat << EOF > /etc/caddy/Caddyfile
 {
-    # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
     email $EMAIL
 }
 $DOMAIN {
     reverse_proxy localhost:8080
 }
 EOF
+else
+cat << EOF > /etc/caddy/Caddyfile
+{
+    acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+    email $EMAIL
+}
+$DOMAIN {
+    reverse_proxy localhost:8080
+}
+EOF
+fi
 
-# Start Caddy service
-sudo systemctl restart caddy
+# Enable Caddy service
 sudo systemctl enable caddy
 
 echo "Caddy setup complete."

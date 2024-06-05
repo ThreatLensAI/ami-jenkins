@@ -105,3 +105,7 @@ variable "github_token" {
   }
 }
 
+variable "environment" {
+  type = string
+  default = "PRODUCTION"
+}

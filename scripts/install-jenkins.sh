@@ -22,8 +22,4 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update
 sudo apt-get install -y jenkins=2.452.1
 
-# Enable Jenkins service
-sudo systemctl stop jenkins
-sudo systemctl enable jenkins
-
 echo "Jenkins installation complete."
