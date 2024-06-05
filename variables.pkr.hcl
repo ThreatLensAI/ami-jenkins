@@ -106,6 +106,6 @@ variable "github_token" {
 }
 
 variable "environment" {
-  type = string
+  type    = string
   default = "PRODUCTION"
 }
