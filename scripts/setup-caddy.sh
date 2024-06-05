@@ -21,7 +21,7 @@ echo "Setting up Caddy for domain: $DOMAIN with email: $EMAIL"
 
 sudo mkdir -p /etc/caddy
 
-if [[ $ENVIRONMENT = "PRODUCTION" ]]; then
+if [[ "$ENVIRONMENT" = "PRODUCTION" ]]; then
 cat << EOF > /etc/caddy/Caddyfile
 {
     email $EMAIL
