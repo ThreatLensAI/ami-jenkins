@@ -18,7 +18,7 @@ build {
   sources = ["source.amazon-ebs.ubuntu"]
 
   provisioner "shell" {
-    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E bash -eux '{{ .Path }}'"
     environment_vars = [
       "DEBIAN_FRONTEND=noninteractive"
     ]
@@ -37,7 +37,7 @@ build {
 
 
   provisioner "shell" {
-    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'"
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E bash -eux '{{ .Path }}'"
     environment_vars = [
       "DEBIAN_FRONTEND=noninteractive",
       "DOMAIN=${var.domain}",
