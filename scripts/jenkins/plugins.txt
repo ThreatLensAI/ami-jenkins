@@ -34,3 +34,5 @@ mailer:latest
 dark-theme:latest
 locale:latest
 job-dsl:latest
+github-pullrequest:latest
+nodejs:latest
