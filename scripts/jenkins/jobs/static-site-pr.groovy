@@ -1,21 +1,27 @@
-pipelineJob('static-site-pr') {
-    description('CSYE7125 Static Site hosted with Caddy')
-    definition {
-        cpsScm {
-            lightweight(true)
-            scm {
-                git {
-                    branch('main')
-                    remote {
-                        github('csye7125-su24-team06/static-site')
-                        credentials('github')
-                    }
-                }
-            }
-            scriptPath('Jenkinsfile-PR')
+multibranchPipelineJob('static-site-pr') {
+  branchSources {
+    github {
+      id('static-site')
+      scanCredentialsId('github')
+      repoOwner('csye7125-su24-team06')
+      repository('static-site')
+      traits {
+        githubNotificationContextTrait {
+          context('jenkins/pr-validate')
         }
+      }
     }
-    triggers {
-        githubPush()
+  }
+  factory {
+    workflowBranchProjectFactory {
+      scriptPath('Jenkinsfile.pr')
     }
+  }
+
+  orphanedItemStrategy {
+    discardOldItems {
+      numToKeep(-1)
+      daysToKeep(-1)
+    }
+  }
 }
