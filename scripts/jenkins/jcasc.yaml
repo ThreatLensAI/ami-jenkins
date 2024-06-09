@@ -25,7 +25,8 @@ tool:
               installers:
                 - nodeJSInstaller:
                     id: '20.14.0'
-                    npmPackages: semantic-release@24.0.0 @semantic-release/git@10.0.1 @semantic-release/changelog@6.0.3 @semantic-release/github@10.0.6 @semantic-release/release-notes-generator@14.0.0
+                    npmPackages: semantic-release@24.0.0 @semantic-release/git@10.0.1 @semantic-release/changelog@6.0.3 @commitlint/cli@19.3.0 @commitlint/config-conventional@19.2.2
+                    npmPackagesRefreshHours: 168
 
 credentials:
   system:
@@ -61,3 +62,4 @@ unclassified:
 
 jobs:
   - file: /var/lib/jenkins/casc_configs/jobs/static-site.groovy
+  - file: /var/lib/jenkins/casc_configs/jobs/static-site-pr.groovy
