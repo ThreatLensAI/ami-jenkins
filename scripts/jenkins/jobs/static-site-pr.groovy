@@ -7,15 +7,29 @@ multibranchPipelineJob('static-site-pr') {
           credentialsId('github')
           repoOwner('csye7125-su24-team06')
           repository('static-site')
-          configuredByUrl(false)
           repositoryUrl('')
+          configuredByUrl(false)
           traits {
             gitHubNotificationContextTrait {
               contextLabel('jenkins/pr-validate')
-              typeSuffix(false)
+              typeSuffix(true)
+            }
+            gitHubIgnoreDraftPullRequestFilter()
+            gitHubForkDiscovery {
+              strategyId(3)
+              trust {
+                gitHubTrustPermissions()
+              }
             }
             gitHubPullRequestDiscovery {
               strategyId(3)
+            }
+            refSpecs {
+              templates {
+                refSpecTemplate {
+                  value('+refs/heads/main:refs/remotes/@{remote}/main')
+                }
+              }
             }
           }
         }
