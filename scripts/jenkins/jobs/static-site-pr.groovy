@@ -1,13 +1,23 @@
 multibranchPipelineJob('static-site-pr') {
   branchSources {
-    github {
-      id('static-site')
-      scanCredentialsId('github')
-      repoOwner('csye7125-su24-team06')
-      repository('static-site')
-      traits {
-        githubNotificationContextTrait {
-          context('jenkins/pr-validate')
+    branchSource {
+      source {
+        github {
+          id('static-site')
+          credentialsId('github')
+          repoOwner('csye7125-su24-team06')
+          repository('static-site')
+          configuredByUrl(false)
+          repositoryUrl('')
+          traits {
+            gitHubNotificationContextTrait {
+              contextLabel('jenkins/pr-validate')
+              typeSuffix(false)
+            }
+            gitHubPullRequestDiscovery {
+              strategyId(3)
+            }
+          }
         }
       }
     }
@@ -21,7 +31,7 @@ multibranchPipelineJob('static-site-pr') {
   orphanedItemStrategy {
     discardOldItems {
       numToKeep(-1)
-      daysToKeep(-1)
+      daysToKeep(30)
     }
   }
 }
