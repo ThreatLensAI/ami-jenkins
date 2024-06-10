@@ -61,5 +61,5 @@ unclassified:
     url: https://${DOMAIN}
 
 jobs:
-  - file: /var/lib/jenkins/casc_configs/jobs/static-site.groovy
-  - file: /var/lib/jenkins/casc_configs/jobs/static-site-pr.groovy
+  - file: /var/lib/jenkins/casc_configs/jobs/build-jobs.groovy
+  - file: /var/lib/jenkins/casc_configs/jobs/pull-request-jobs.groovy
