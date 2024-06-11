@@ -25,8 +25,9 @@ build {
     scripts = [
       "scripts/install-dependencies.sh",
       "scripts/install-jenkins.sh",
-      "scripts/install-caddy.sh",
-      "scripts/install-docker.sh"
+      "scripts/install-helm.sh",
+      "scripts/install-docker.sh",
+      "scripts/install-caddy.sh"
     ]
   }
 

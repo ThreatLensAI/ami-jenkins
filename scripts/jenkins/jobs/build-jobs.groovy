@@ -2,7 +2,7 @@
 String buildJobRepoOwner = 'csye7125-su24-team06'
 
 // List of repositories to create build jobs for
-def buildRepos = ['static-site']
+def buildRepos = ['static-site', 'helm-webapp-cve-processor']
 
 // Pull Request Job
 String buildScriptPath = 'Jenkinsfile'
@@ -19,6 +19,10 @@ for (buildRepo in buildRepos) {
             remote {
               github(url)
               credentials('github')
+            }
+            extensions {
+              wipeOutWorkspace()
+              localBranch()
             }
           }
         }
