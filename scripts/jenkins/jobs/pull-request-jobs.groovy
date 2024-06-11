@@ -2,7 +2,7 @@
 String pullRequestRepoOwner = 'csye7125-su24-team06'
 
 // List of repositories to create pull request jobs for
-def pullRequestRepos = ['static-site']
+def pullRequestRepos = ['static-site', 'helm-webapp-cve-processor']
 
 // Pull Request Job
 String pullRequestScriptPath = 'Jenkinsfile.pr'
