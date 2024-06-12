@@ -36,6 +36,12 @@ for (pullRequestRepo in pullRequestRepos) {
               gitHubPullRequestDiscovery {
                 strategyId(3)
               }
+              headWildcardFilterWithPR {
+                includes("main")
+                excludes("")
+                tagIncludes("")
+                tagExcludes("")
+              }
               refSpecs {
                 templates {
                   refSpecTemplate {
