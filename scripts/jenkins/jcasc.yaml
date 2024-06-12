@@ -35,6 +35,14 @@ tool:
               installers:
                 - golangInstaller:
                     id: '1.22.4'
+  terraform:
+    installations:
+      - name: 'terraform'
+        properties:
+          - installSource:
+              installers:
+                - terraformInstaller:
+                    id: '1.8.5-linux-amd64'
 
 credentials:
   system:
