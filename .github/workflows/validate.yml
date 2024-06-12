@@ -26,6 +26,10 @@ jobs:
         id: fmt
         run: 'packer fmt -check .'
 
+      - name: Export github key
+        id: export
+        run: 'echo "Hello" > github-app.pem'
+
       - name: Packer validate
         id: validate
         env:
@@ -36,4 +40,5 @@ jobs:
           PKR_VAR_docker_hub_username: ${{ secrets.PKR_VAR_docker_hub_username }}
           PKR_VAR_docker_hub_password: ${{ secrets.PKR_VAR_docker_hub_password }}
           PKR_VAR_github_token: ${{ secrets.PKR_VAR_github_token }}
+          PKR_VAR_github_app_id: ${{ secrets.PKR_VAR_github_app_id }}
         run: 'packer validate .'
