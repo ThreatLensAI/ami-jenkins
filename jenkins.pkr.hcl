@@ -36,6 +36,10 @@ build {
     destination = "/tmp"
   }
 
+  provisioner "file" {
+    source      = "github-app.pem"
+    destination = "/tmp/github-app.pem"
+  }
 
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -S -E bash -eux '{{ .Path }}'"
@@ -48,6 +52,7 @@ build {
       "DOCKER_HUB_USERNAME=${var.docker_hub_username}",
       "DOCKER_HUB_PASSWORD=${var.docker_hub_password}",
       "GITHUB_TOKEN=${var.github_token}",
+      "GITHUB_APP_ID=${var.github_app_id}",
       "ENVIRONMENT=${var.environment}"
     ]
     scripts = [

@@ -25,6 +25,7 @@ echo "Installing Jenkins Plugins..."
 # Create Jenkins jcasc config directory
 sudo mkdir -p /var/lib/jenkins/casc_configs/
 sudo cp -r /tmp/jenkins/* /var/lib/jenkins/casc_configs/
+sudo cp /tmp/github-app.pem /var/lib/jenkins/secrets/github-app.pem
 
 # Change ownership of jcasc config directory
 sudo chown -R jenkins:jenkins /var/lib/jenkins/casc_configs
@@ -55,12 +56,18 @@ JENKINS_PASSWORD=$JENKINS_PASSWORD
 DOCKER_HUB_USERNAME=$DOCKER_HUB_USERNAME
 DOCKER_HUB_PASSWORD=$DOCKER_HUB_PASSWORD
 GITHUB_TOKEN=$GITHUB_TOKEN
+GITHUB_APP_ID=$GITHUB_APP_ID
+GITHUB_APP_ID_PRIVATE_KEY_PATH=/var/lib/jenkins/secrets/github-app.pem
 EOF
 
-# Change ownership of plugins, init.groovy.d directory
+# Change ownership/permissions of plugins, secrets
 sudo chown -R jenkins:jenkins /var/lib/jenkins/plugins
+
 sudo chown -R jenkins:jenkins /var/lib/jenkins/secrets/jcasc.properties
 sudo chmod 600 /var/lib/jenkins/secrets/jcasc.properties
+
+sudo chown -R jenkins:jenkins /var/lib/jenkins/secrets/github-app.pem
+sudo chmod 401 /var/lib/jenkins/secrets/github-app.pem
 
 echo "Jenkins env setup complete."
 

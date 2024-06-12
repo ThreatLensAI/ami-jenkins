@@ -105,6 +105,15 @@ variable "github_token" {
   }
 }
 
+variable "github_app_id" {
+  type      = string
+  sensitive = true
+  validation {
+    condition     = var.github_app_id != null && length(var.github_app_id) > 0
+    error_message = "GitHub app id cannot be empty."
+  }
+}
+
 variable "environment" {
   type    = string
   default = "PRODUCTION"
