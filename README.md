@@ -27,13 +27,16 @@ Once Packer is initialized, you can build the custom image using the provided `.
 
 To build the image, run the following command in your terminal:
 
-    export PKR_VAR_domain="example.com"            # Update with your domain
-    export PKR_VAR_email="email@example.com"       # Update with your email
-    export PKR_VAR_jenkins_user="jenkins"          # Update with your Jenkins user
-    export PKR_VAR_jenkins_password="password"     # Update with your Jenkins password
-    export PKR_VAR_docker_hub_username="username"  # Update with your DockerHub username
-    export PKR_VAR_docker_hub_password="password"  # Update with your DockerHub password
-    export PKR_VAR_github_token="token"            # Update with your GitHub token
+    echo "---Github App private key---" > github-app.pem # Update with your GitHub App private key
+
+    export PKR_VAR_domain="example.com"                  # Update with your domain
+    export PKR_VAR_email="email@example.com"             # Update with your email
+    export PKR_VAR_jenkins_user="jenkins"                # Update with your Jenkins user
+    export PKR_VAR_jenkins_password="password"           # Update with your Jenkins password
+    export PKR_VAR_docker_hub_username="username"        # Update with your DockerHub username
+    export PKR_VAR_docker_hub_password="password"        # Update with your DockerHub password
+    export PKR_VAR_github_token="token"                  # Update with your GitHub token
+    export PKR_VAR_github_app_id="app_id"                # Update with your GitHub app ID
     packer build -color=false .
 
 In case you don't want to export the above variables, use the `-var` flag, it allows you to pass variables to the build process.
@@ -46,6 +49,9 @@ Required variables are:
 - `docker_hub_username` - The DockerHub username.
 - `docker_hub_password` - The DockerHub password.
 - `github_token` - The GitHub token.
+- `github_app_id` - The GitHub app ID.
+
+The github app private key must be export to the file `github-app.pem` as packer uses this file to create the GitHub App installation token.
 
 ## CI/CD Pipeline
 
@@ -70,3 +76,5 @@ Required secrets for CI/CD pipeline are:
   - `PKR_VAR_docker_hub_username` - The DockerHub username.
   - `PKR_VAR_docker_hub_password` - The DockerHub password.
   - `PKR_VAR_github_token` - The GitHub token.
+  - `PKR_VAR_github_app_id` - The GitHub app ID.
+  - `PKR_VAR_github_app_private_key` - The GitHub App private key.

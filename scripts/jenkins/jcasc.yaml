@@ -27,6 +27,14 @@ tool:
                     id: '20.14.0'
                     npmPackages: semantic-release@24.0.0 semantic-release-helm3@2.9.3 @commitlint/cli@19.3.0 @commitlint/config-conventional@19.2.2
                     npmPackagesRefreshHours: 360
+  go:
+    installations:
+      - name: 'go'
+        properties:
+          - installSource:
+              installers:
+                - golangInstaller:
+                    id: '1.22.4'
 
 credentials:
   system:
@@ -49,6 +57,12 @@ credentials:
               id: github-webhook
               secret: '${GITHUB_TOKEN}'
               description: 'GitHub webhook Token'
+          - gitHubApp:
+              scope: GLOBAL
+              id: 'github-app'
+              appID: ${GITHUB_APP_ID}
+              privateKey: ${readFile:${GITHUB_APP_ID_PRIVATE_KEY_PATH}}
+              description: 'GitHub app'
 
 unclassified:
   githubpluginconfig:

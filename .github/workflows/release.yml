@@ -36,6 +36,12 @@ jobs:
         id: validate
         run: 'packer validate -syntax-only -evaluate-datasources .'
 
+      - name: Export github key
+        id: export
+        env:
+          GITHUB_APP_KEY: ${{secrets.PKR_VAR_github_app_private_key}}
+        run: 'echo "$GITHUB_APP_KEY" > github-app.pem'
+
       - name: Packer build
         env:
           PKR_VAR_domain: ${{ secrets.PKR_VAR_domain }}
@@ -45,5 +51,6 @@ jobs:
           PKR_VAR_docker_hub_username: ${{ secrets.PKR_VAR_docker_hub_username }}
           PKR_VAR_docker_hub_password: ${{ secrets.PKR_VAR_docker_hub_password }}
           PKR_VAR_github_token: ${{ secrets.PKR_VAR_github_token }}
+          PKR_VAR_github_app_id: ${{ secrets.PKR_VAR_github_app_id }}
         id: build
         run: packer build -color=false .
