@@ -18,7 +18,7 @@ for (buildRepo in buildRepos) {
             branch("main")
             remote {
               github(url)
-              credentials('github')
+              credentials('github-app')
             }
             extensions {
               wipeOutWorkspace()

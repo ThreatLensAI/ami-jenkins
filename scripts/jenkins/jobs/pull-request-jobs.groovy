@@ -16,7 +16,7 @@ for (pullRequestRepo in pullRequestRepos) {
         source {
           github {
             id(prJobName)
-            credentialsId('github')
+            credentialsId('github-app')
             repoOwner(pullRequestRepoOwner)
             repository(pullRequestRepo)
             repositoryUrl("")
