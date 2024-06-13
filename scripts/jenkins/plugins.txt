@@ -34,3 +34,4 @@ timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
 scm-filter-branch-pr:latest
+terraform:latest
