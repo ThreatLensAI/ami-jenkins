@@ -1,6 +1,7 @@
 name: Create Image
 
 on:
+  pull_request:
   push:
     branches:
       - main
