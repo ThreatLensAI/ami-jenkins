@@ -2,7 +2,15 @@
 String buildJobRepoOwner = 'csye7125-su24-team06'
 
 // List of repositories to create build jobs for
-def buildRepos = ['static-site', 'helm-webapp-cve-processor', 'webapp-cve-processor', 'helm-chart-caddy']
+def buildRepos = [
+  'static-site',
+  'helm-webapp-cve-processor',
+  'webapp-cve-processor',
+  'helm-chart-caddy',
+  'webapp-cve-consumer',
+  'db-migration',
+  'helm-webapp-cve-consumer'
+]
 
 // Pull Request Job
 String buildScriptPath = 'Jenkinsfile'
