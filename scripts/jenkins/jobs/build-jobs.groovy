@@ -9,7 +9,8 @@ def buildRepos = [
   'helm-chart-caddy',
   'webapp-cve-consumer',
   'db-migration',
-  'helm-webapp-cve-consumer'
+  'helm-webapp-cve-consumer',
+  'helm-eks-autoscaler'
 ]
 
 // Pull Request Job
