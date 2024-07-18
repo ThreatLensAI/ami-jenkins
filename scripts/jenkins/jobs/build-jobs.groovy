@@ -10,7 +10,8 @@ def buildRepos = [
   'webapp-cve-consumer',
   'db-migration',
   'helm-webapp-cve-consumer',
-  'helm-eks-autoscaler'
+  'helm-eks-autoscaler',
+  'mirroring'
 ]
 
 // Pull Request Job
