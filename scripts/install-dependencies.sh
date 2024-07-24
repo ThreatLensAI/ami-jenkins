@@ -14,6 +14,9 @@ echo "Installing dependencies"
 # Update the system
 sudo apt-get -y upgrade
 
+# Install build-essential
+sudo apt-get install -y build-essential
+
 # Install Fontconfig, Java
 sudo apt-get install -y fontconfig openjdk-17-jre
 
