@@ -12,7 +12,8 @@ def buildRepos = [
   'helm-webapp-cve-consumer',
   'helm-eks-autoscaler',
   'mirroring',
-  'cve-operator'
+  'cve-operator',
+  'helm-cluster-operations'
 ]
 
 // Pull Request Job

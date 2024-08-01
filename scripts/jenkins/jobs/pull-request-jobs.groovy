@@ -13,7 +13,8 @@ def pullRequestRepos = [
   'db-migration',
   'helm-webapp-cve-consumer',
   'helm-eks-autoscaler',
-  'cve-operator'
+  'cve-operator',
+  'helm-cluster-operations'
 ]
 
 // Pull Request Job
