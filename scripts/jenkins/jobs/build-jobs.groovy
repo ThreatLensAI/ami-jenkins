@@ -13,7 +13,8 @@ def buildRepos = [
   'helm-eks-autoscaler',
   'mirroring',
   'cve-operator',
-  'helm-cluster-operations'
+  'helm-cluster-operations',
+  'llm-ingestor'
 ]
 
 // Pull Request Job

@@ -14,7 +14,8 @@ def pullRequestRepos = [
   'helm-webapp-cve-consumer',
   'helm-eks-autoscaler',
   'cve-operator',
-  'helm-cluster-operations'
+  'helm-cluster-operations',
+  'llm-ingestor'
 ]
 
 // Pull Request Job
