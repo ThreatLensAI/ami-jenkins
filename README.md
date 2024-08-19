@@ -1,4 +1,4 @@
-# CSYE7125 Jenkins AMI using Packer
+# Jenkins AMI using Packer
 
 This repository contains configurations and scripts to build a Jenkins AMI using Packer.
 
